@@ -1,17 +1,39 @@
-<ion-header>
-  <ion-navbar>
-    <ion-title>Home</ion-title>
-  </ion-navbar>
+<ion-header text-center>
+ <div padding>{{r.city}}, {{r.country}}</div>
 </ion-header>
 
-<ion-content padding>
-  <h2>Welcome to Ionic!</h2>
-  <p>
-    This starter project comes with simple tabs-based layout for apps
-    that are going to primarily use a Tabbed UI.
-  </p>
-  <p>
-    Take a look at the <code>src/pages/</code> directory to add or change tabs,
-    update any existing page or create new pages.
-  </p>
+<ion-content padding style="background-color:rgb(66, 181, 219)">
+  <ion-grid>
+    <ion-row>
+      <ion-col >
+        <div style="text-align:center"><img  src="../../assets/icons/{{r.icon}}.png" width="200" height="200"/></div>
+        <div text-center><strong style="font-size:20px">{{r.description}}</strong></div>
+        <div text-center ><strong style="font-size:80px">{{r.temperature}} &#x2103;</strong></div>
+      </ion-col>
+     
+      </ion-row>
+        <ion-row style="padding-top:100px">
+          <ion-col text-center >
+              <div><ion-icon name="umbrella"></ion-icon></div>
+            <div>cloud coverage({{r.cloud}})</div>
+          </ion-col>
+          <ion-col text-center>
+              <div style="text-align:center"><ion-icon name="time"></ion-icon></div>
+            <div>{{r.date}}</div>
+            
+          </ion-col>
+        </ion-row>
+        
+        <ion-row>
+          <ion-col >
+        
+     
+        
+     
+        
+      
+        
+      </ion-col>
+    </ion-row>
+  </ion-grid>
 </ion-content>
