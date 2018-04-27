@@ -3,6 +3,8 @@ import { Location } from './../../utility/iWeather';
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { Storage } from '@ionic/storage';
+import { WeatherserviceProvider } from './../../providers/weatherservice/weatherservice';
+import 'rxjs/operator/do'
 
 /**
  * Generated class for the SettingsPage page.
@@ -21,17 +23,44 @@ export class SettingsPage {
     city:'',
     country:''
   }
-  constructor(public navCtrl: NavController, public navParams: NavParams,private storage: Storage) {
+  country;
+  city;
+  countries: any;
+  cities:any;
+  constructor(public navCtrl: NavController, public navParams: NavParams,private storage: Storage,private ws:WeatherserviceProvider) {
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad SettingsPage');
+
+    this.ws.getCountries()
+        
+        .subscribe(c=>{
+          
+          this.countries=c;
+        //  console.log(this.countries)
+
+        })
+
+    this.ws.getCities()
+   
+        .subscribe(x => this.cities=x)
+        
+        
+
+
   }
 
+  
+
   SubmitForm(){
-    console.log(this.location.city);
+    this.location.city=this.city;
+    this.location.country=this.country;
+
+    console.log('uuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuu'+this.location.city);
     this.storage.set('location',this.location);
-    this.navCtrl.push(HomePage)
+    this.storage.set('i','xxxx');
+    this.navCtrl.push(HomePage,{'notNew':true})
   }
 
 }

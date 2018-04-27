@@ -12,7 +12,7 @@ import { IonicStorageModule } from '@ionic/storage';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { WeatherserviceProvider } from '../providers/weatherservice/weatherservice';
-
+import { SearchPipe } from '../pipes/search/search';
 import{HttpClientModule} from '@angular/common/http';
 
 @NgModule({
@@ -22,6 +22,7 @@ import{HttpClientModule} from '@angular/common/http';
     ContactPage,
     HomePage,
     TabsPage,
+    SearchPipe,
     SettingsPage
   ],
   imports: [

@@ -1,7 +1,9 @@
+import { Observable } from 'rxjs/Observable';
 import { Location, Report } from './../../utility/iWeather';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-
+import  'rxjs/add/operator/map'
+import  'rxjs/add/operator/filter'
 /*
   Generated class for the WeatherserviceProvider provider.
 
@@ -25,11 +27,22 @@ export class WeatherserviceProvider {
       let url=this.baseurl+'city='+loc.city+'&country='+loc.country+'&Key='+this.apiKey;
       
        
-      return this.http.get(url);
-        
-      
+      return this.http.get(url);   
+    
+  }
+
+  getCountries(){
+    return this.http.get('./assets/models/countries.json');
+  }
+  getCities(){
+    console.log('inside cities................................')
+  
+    return this.http.get('./assets/models/cities.json')
+                    //.filter(city => city[0].country_code == "")
     
 
+
+    
   }
 
 }

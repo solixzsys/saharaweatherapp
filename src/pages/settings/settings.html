@@ -19,14 +19,25 @@
     <ion-row>
       <ion-col >
           <form (ngSubmit)="SubmitForm()">
+
               <ion-item>
-                <ion-label>City</ion-label>
-                <ion-input type="text" [(ngModel)]="location.city" name="city"></ion-input>
-              </ion-item>
+                  <ion-label>Country</ion-label>
+                  <ion-select [(ngModel)]="country" name="country">
+                    <template  *ngFor="let c of countries" >
+                    <ion-option *ngIf="c.country_name" value="{{c.country_code}}">{{c.country_name}}</ion-option>
+                  </template>
+                  </ion-select>
+                </ion-item>
               <ion-item>
-                <ion-label>Country</ion-label>
-                <ion-textarea [(ngModel)]="location.country" name="country"></ion-textarea>
+                  <ion-label>Cities</ion-label>
+                  <ion-select [(ngModel)]="city" name="city">
+                    <template  *ngFor="let ct of cities | search : country" >
+                    <ion-option value="{{ct.city_name}}">{{ct.city_name}}</ion-option>
+                  </template>
+                  </ion-select>
+                
               </ion-item>
+             
               <button ion-button type="submit" block>Submit</button>
             </form>
       </ion-col>
